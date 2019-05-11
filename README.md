@@ -10,7 +10,7 @@ The pure Scala version based on Spark GraphX is [**here**](https://github.com/Ta
 ### 1.1 data set
   * Data set of **txt** or **csv** file is input by given directory -- "*DATA_PATH*" in bash script "**parameters.sh**".
   * Each item in data set need to be separated by "**,**" or other white delimiters like **spaces** or **tabs**.   
-  Example:
+Example:
   ```bash
   #cluster model
   export DATA_PATH="hdfs/path/to/data"
@@ -20,13 +20,13 @@ The pure Scala version based on Spark GraphX is [**here**](https://github.com/Ta
 ### 1.2 lambda
   * The parameter lambda is the Weber-Fechner coefficient, and it is bigger than 0.
   * In MinHash coding model, you are required to give this parameter. It dose not work in SD coding model.   
-  Example:
+Example:
   ```bash
   export LAMBDA=0.1
   ```
 ### 1.3 Other optional parameters
   * You can set them in bash script "**parameters.sh**"   
-  Example:
+Example:
   ```bash
   # Optional parameters
   # 1. START_SCALE: Setting encoding starting scale
@@ -48,7 +48,7 @@ The pure Scala version based on Spark GraphX is [**here**](https://github.com/Ta
     you need to give a directory -- "*OUTPUT_PATH*" in bash script "**parameters.sh**".
   * You can get clustering results in different scale in algorithm.
   * The results are pairs of item ids and label -- **"id,label"**.   
-  Example:
+Example:
   ```bash
   #cluster model
   export OUTPUT_PATH="hdfs/path/to/save/results"
