@@ -1,10 +1,10 @@
-# Weber-Fechner Clustering (WFC) implementation based on GraphLab
-WFC-GraphLab is a scala implementation based on **GraphLab(python)** of Weber-Fechner Clustering algorithm. 
+# Weber-Fechner Clustering (WFC) implementation based on Spark and GraphLab
+WFC-with-Spaek-and-GraphLab is the Weber-Fechner Clustering algorithm implementation based on **Spark(Scala)** and **GraphLab(Python)**. 
    
-Because this framework mainly construct with scala codes, only 'Connected Components' part is writen with python based on
+This framework mainly construct with scala codes, only 'Connected Components' part is writen with python based on
 GraphLab, so this implementation runs with bash script. 
 
-The pure scale version based on GraphX is [**here**](https://github.com/IoTDATALab/WFC-GraphX).
+The pure Scala version based on Spark GraphX is [**here**](https://github.com/TaoWangXJTU/WFC-Spark).
 
 ## 1.Program Input
 ### 1.1 data set
