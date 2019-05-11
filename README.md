@@ -9,7 +9,8 @@ The pure Scala version based on Spark GraphX is [**here**](https://github.com/Ta
 ## 1.Program Input
 ### 1.1 data set
   * Data set of **txt** or **csv** file is input by given directory -- "*DATA_PATH*" in bash script "**parameters.sh**".
-  * Each item in data set need to be separated by "**,**" or other white delimiters like **spaces** or **tabs**.
+  * Each item in data set need to be separated by "**,**" or other white delimiters like **spaces** or **tabs**.   
+  Example:
   ```bash
   #cluster model
   export DATA_PATH="hdfs/path/to/data"
@@ -18,12 +19,14 @@ The pure Scala version based on Spark GraphX is [**here**](https://github.com/Ta
   ```  
 ### 1.2 lambda
   * The parameter lambda is the Weber-Fechner coefficient, and it is bigger than 0.
-  * Actually it is *1* in SD coding model.
+  * In MinHash coding model, you are required to give this parameter. It dose not work in SD coding model.   
+  Example:
   ```bash
-  export LAMBDA=1
+  export LAMBDA=0.1
   ```
 ### 1.3 Other optional parameters
-  * You can set them in bash script "**parameters.sh**"
+  * You can set them in bash script "**parameters.sh**"   
+  Example:
   ```bash
   # Optional parameters
   # 1. START_SCALE: Setting encoding starting scale
@@ -44,7 +47,8 @@ The pure Scala version based on Spark GraphX is [**here**](https://github.com/Ta
   * For storing temporary generated data and cluster results, 
     you need to give a directory -- "*OUTPUT_PATH*" in bash script "**parameters.sh**".
   * You can get clustering results in different scale in algorithm.
-  * The results are pairs of item ids and label -- **"id,label"**.
+  * The results are pairs of item ids and label -- **"id,label"**.   
+  Example:
   ```bash
   #cluster model
   export OUTPUT_PATH="hdfs/path/to/save/results"
@@ -96,7 +100,8 @@ The pure Scala version based on Spark GraphX is [**here**](https://github.com/Ta
 ## 5. Suggestions about setting optional parameters
 ### 5.1 CODE_MODEL
 There are two encoding models that you can choose which model to use, SD code model and For MinHasH code model  
-We suggest that you set it SD if the data dimensions id less than 4, otherwise set it MIN.
+We suggest that you set it SD if the data dimensions id less than 4, otherwise set it MIN.   
+Example:
 ```bash
   # Encoding with SD code if dimensions is less than 4.
   export CODE_MODEL=SD
@@ -114,8 +119,8 @@ Parameter *NUMBER_OF_HASHTABLES* is set *125*, and '*NUMBER_OF_BUCKETS*' is set 
 (2) *rows = NUMBER_OF_HASHTABLES / NUMBER_OF_BUCKETS*. The smaller '*rows*' is, the more accurate clustering is, but the lower 
     program execution efficiency is, and more likely you will get **IO exception of stack overflow**. To avoid this
     problem, another way to maintain or improve the accuracy of clustering is to increase '*NUMBER_OF_HASHTABLES*', and 
-    adjust '*NUMBER_OF_BUCKETS*' at the same time to keep an appropriate '*rows*'.
-
+    adjust '*NUMBER_OF_BUCKETS*' at the same time to keep an appropriate '*rows*'.   
+Example:
 ```bash
 # row is 5 by default, and now it is 10
 export NUMBER_OF_HASHTABLES=180
@@ -126,8 +131,8 @@ export NUMBER_OF_BUCKETS=18
 The two parameters decide the encoding scale range from *START_SCALE* to *END_SCALE*.
 * *START_SCALE* is set *1* by default. 
 * *END_SCALE* is set *0* by default, and we can calculate the *max coding scale* if you do not give them.
-* If you do not set *END_SCALE* with 0, *END_SCALE* must be set bigger than *START_SCALE*.
-
+* If you do not set *END_SCALE* with 0, *END_SCALE* must be set bigger than *START_SCALE*.   
+Example:
 ```bash
 # You can do that to get clustering results in scale 3~9.
 export START_SCALE=3
